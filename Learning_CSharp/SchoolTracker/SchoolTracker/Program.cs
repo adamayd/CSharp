@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SchoolTracker
 {
@@ -6,24 +7,39 @@ namespace SchoolTracker
     {
         static void Main(string[] args)
         {
-            Console.Write("How many students in your class? ");
-            var studentCount = int.Parse(Console.ReadLine());
+            //Console.Write("How many students in your class? ");
+            //var studentCount = int.Parse(Console.ReadLine());
 
-            var studentNames = new string[studentCount];
-            var studentGrades = new int[studentCount];
+            var studentNames = new List<string>();
+            var studentGrades = new List<int>();
 
-            for (int i = 0; i < studentCount; i++)
+            var adding = true;
+
+            while (adding)
             {
                 Console.Write("Name: ");
-                studentNames[i] = Console.ReadLine();
+                studentNames.Add(Console.ReadLine());
 
                 Console.Write("Grade: ");
-                studentGrades[i] = int.Parse(Console.ReadLine());
+                studentGrades.Add(int.Parse(Console.ReadLine()));
+
+                Console.Write("Add another? y/n ");
+                if (Console.ReadLine().ToLower() != "y")
+                    adding = false;
+
+                Console.Clear();
             }
 
-            Console.WriteLine();
+            //for (int i = 0; i < studentCount; i++)
+            //{
+            //    Console.Write("Name: ");
+            //    studentNames[i] = Console.ReadLine();
 
-            for (int i = 0; i < studentCount; i++)
+            //    Console.Write("Grade: ");
+            //    studentGrades[i] = int.Parse(Console.ReadLine());
+            //}
+
+            for (int i = 0; i < studentNames.Count; i++)
             {
                 Console.WriteLine("Name: {0}, Grade: {1}", studentNames[i], studentGrades[i]);
             }
