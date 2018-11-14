@@ -7,13 +7,13 @@ namespace Survey
         static void Main(string[] args)
         {
             Console.Write("What is your name? ");
-            var name = Console.ReadLine();
+            var name = TryAnswer();
 
             Console.Write("How old are you? ");
-            var age = Console.ReadLine();
+            var age = TryAnswer();
 
             Console.Write("What month were you born in? ");
-            var birthMonth = Console.ReadLine();
+            var birthMonth = TryAnswer();
 
             Console.WriteLine("{0} is {1} years old and was born in the month of {2}", name, age, birthMonth);
 
@@ -65,6 +65,19 @@ namespace Survey
             {
                 Console.WriteLine("You are a Sagittarius");
             }
+        }
+
+        static string TryAnswer()
+        {
+            var answer = Console.ReadLine();
+
+            if (answer == "")
+            {
+                Console.WriteLine("Your answer cannot be blank");
+                return Console.ReadLine();
+            }
+
+            return answer;
         }
     }
 }
