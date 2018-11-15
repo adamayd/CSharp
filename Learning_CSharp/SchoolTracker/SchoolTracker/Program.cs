@@ -20,26 +20,40 @@ namespace SchoolTracker
 
             while (adding)
             {
-                var newStudent = new Student();
-                
-                newStudent.Name = Util.Console.Ask("Name: ");
+                try
+                {
+                    var newStudent = new Student();
 
-                newStudent.Grade = int.Parse(Util.Console.Ask("Grade: "));
-                
-                newStudent.Birthday = Util.Console.Ask("Birthday: ");
+                    newStudent.Name = Util.Console.Ask("Name: ");
 
-                newStudent.Address = Util.Console.Ask("Address: ");
-                
-                newStudent.Phone = Int64.Parse(Util.Console.Ask("Phone Number: "));
+                    newStudent.Grade = int.Parse(Util.Console.Ask("Grade: "));
 
-                students.Add(newStudent);
-                Student.Count++;
+                    newStudent.Birthday = Util.Console.Ask("Birthday: ");
 
-                Console.Write("Add another? y/n ");
-                if (Console.ReadLine().ToLower() != "y")
-                    adding = false;
+                    newStudent.Address = Util.Console.Ask("Address: ");
 
-                Console.Clear();
+                    newStudent.Phone = Int64.Parse(Util.Console.Ask("Phone Number: "));
+
+                    students.Add(newStudent);
+                    Student.Count++;
+
+                    Console.Write("Add another? y/n ");
+                    if (Console.ReadLine().ToLower() != "y")
+                        adding = false;
+
+                    Console.Clear();
+
+                }
+                catch (FormatException)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Input was not a number");
+                }
+                catch (Exception)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Error adding student, Please try again");
+                }
             }
 
             //for (int i = 0; i < studentCount; i++)
