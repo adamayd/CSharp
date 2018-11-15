@@ -23,21 +23,22 @@ namespace SchoolTracker
                 var newStudent = new Student();
                 
                 Console.Write("Name: ");
-                newStudent.Name = (Console.ReadLine());
+                newStudent.Name = Console.ReadLine();
 
                 Console.Write("Grade: ");
-                newStudent.Grade = (int.Parse(Console.ReadLine()));
+                newStudent.Grade = int.Parse(Console.ReadLine());
                 
                 Console.Write("Birthday: ");
-                newStudent.Birthday = (Console.ReadLine());
+                newStudent.Birthday = Console.ReadLine();
 
                 Console.Write("Address: ");
-                newStudent.Address = (Console.ReadLine());
+                newStudent.Address = Console.ReadLine();
                 
                 Console.Write("Phone Number: ");
-                newStudent.Phone = (Int64.Parse(Console.ReadLine()));
+                newStudent.Phone = Int64.Parse(Console.ReadLine());
 
                 students.Add(newStudent);
+                Student.Count++;
 
                 Console.Write("Add another? y/n ");
                 if (Console.ReadLine().ToLower() != "y")
@@ -60,6 +61,8 @@ namespace SchoolTracker
                 Console.WriteLine("Name: {0}, Grade: {1}", student.Name, student.Grade);
             }
 
+            Console.WriteLine("{0} students", Student.Count);
+
             // *** Replaced for loop below with foreach above when moving to List of Student objects
             //for (int i = 0; i < studentNames.Count; i++)
             //{
@@ -75,10 +78,22 @@ namespace SchoolTracker
     
     class Student
     {
+        static public int Count = 0;
+
         public string Name;
         public int Grade;
         public string Birthday;
         public string Address;
-        public long Phone;
+        private long phone;
+
+        public long Phone
+        {
+            set { phone = value; }
+        }
+        
+        public void SetPhone(long number)
+        {
+            phone = number;
+        }
     }
 }
