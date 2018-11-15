@@ -6,64 +6,57 @@ namespace Survey
     {
         static void Main(string[] args)
         {
+            var answers = new Answers();
+            
             Console.Write("What is your name? ");
-            var name = TryAnswer();
+            answers.Name = TryAnswer();
 
             Console.Write("How old are you? ");
-            var age = TryAnswer();
+            answers.Age = int.Parse(TryAnswer());
 
             Console.Write("What month were you born in? ");
-            var birthMonth = TryAnswer();
+            answers.BirthMonth = TryAnswer();
 
-            Console.WriteLine("{0} is {1} years old and was born in the month of {2}", name, age, birthMonth);
+            answers.Display();
 
-            if(birthMonth.ToLower() == "january")
+            switch (answers.BirthMonth.ToLower())
             {
-                Console.WriteLine("You are a Capricorn");
-            }
-            else if(birthMonth.ToLower() == "february")
-            {
-                Console.WriteLine("You are an Aquarius");
-            }
-            else if(birthMonth.ToLower() == "march")
-            {
-                Console.WriteLine("You are a Pices");
-            }
-            else if(birthMonth.ToLower() == "april")
-            {
-                Console.WriteLine("You are an Aries");
-            }
-            else if(birthMonth.ToLower() == "may")
-            {
-                Console.WriteLine("You are a Taurus");
-            }
-            else if(birthMonth.ToLower() == "june")
-            {
-                Console.WriteLine("You are a Gemini");
-            }
-            else if(birthMonth.ToLower() == "july")
-            {
-                Console.WriteLine("You are a Cancer");
-            }
-            else if(birthMonth.ToLower() == "august")
-            {
-                Console.WriteLine("You are a Leo");
-            }
-            else if(birthMonth.ToLower() == "september")
-            {
-                Console.WriteLine("You are a Virgo");
-            }
-            else if(birthMonth.ToLower() == "october")
-            {
-                Console.WriteLine("You are a Libra");
-            }
-            else if(birthMonth.ToLower() == "november")
-            {
-                Console.WriteLine("You are a Scorpio");
-            }
-            else if(birthMonth.ToLower() == "december")
-            {
-                Console.WriteLine("You are a Sagittarius");
+                case "january":
+                    Console.WriteLine("You are a Capricorn");
+                    break;
+                case "february":
+                    Console.WriteLine("You are an Aquarius");
+                    break;
+                case "march":
+                    Console.WriteLine("You are a Pices");
+                    break;
+                case "april":
+                    Console.WriteLine("You are an Aries");
+                    break;
+                case "may":
+                    Console.WriteLine("You are a Taurus");
+                    break;
+                case "june":
+                    Console.WriteLine("You are a Gemini");
+                    break;
+                case "july":
+                    Console.WriteLine("You are a Cancer");
+                    break;
+                case "august":
+                    Console.WriteLine("You are a Leo");
+                    break;
+                case "september":
+                    Console.WriteLine("You are a Virgo");
+                    break;
+                case "october":
+                    Console.WriteLine("You are a Libra");
+                    break;
+                case "november":
+                    Console.WriteLine("You are a Scorpio");
+                    break;
+                default:
+                    Console.WriteLine("You are a Sagittarius");
+                    break;
             }
         }
 
@@ -78,6 +71,18 @@ namespace Survey
             }
 
             return answer;
+        }
+    }
+
+    class Answers
+    {
+        public string Name;
+        public int Age;
+        public string BirthMonth;
+
+        public void Display()
+        {
+            Console.WriteLine("{0} is {1} years old and was born in the month of {2}", Name, Age, BirthMonth);
         }
     }
 }
