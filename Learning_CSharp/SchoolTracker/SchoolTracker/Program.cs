@@ -22,20 +22,15 @@ namespace SchoolTracker
             {
                 var newStudent = new Student();
                 
-                Console.Write("Name: ");
-                newStudent.Name = Console.ReadLine();
+                newStudent.Name = Util.Console.Ask("Name: ");
 
-                Console.Write("Grade: ");
-                newStudent.Grade = int.Parse(Console.ReadLine());
+                newStudent.Grade = int.Parse(Util.Console.Ask("Grade: "));
                 
-                Console.Write("Birthday: ");
-                newStudent.Birthday = Console.ReadLine();
+                newStudent.Birthday = Util.Console.Ask("Birthday: ");
 
-                Console.Write("Address: ");
-                newStudent.Address = Console.ReadLine();
+                newStudent.Address = Util.Console.Ask("Address: ");
                 
-                Console.Write("Phone Number: ");
-                newStudent.Phone = Int64.Parse(Console.ReadLine());
+                newStudent.Phone = Int64.Parse(Util.Console.Ask("Phone Number: "));
 
                 students.Add(newStudent);
                 Student.Count++;
@@ -74,26 +69,55 @@ namespace SchoolTracker
             //    Console.WriteLine(student);
             //}
         }
-    }
-    
-    class Student
-    {
-        static public int Count = 0;
 
+        static void Import()
+        {
+            var importedStudent = new Student("Jack", 62, "Oct 17", "123 Main Street", 5551234567);
+            Console.WriteLine(importedStudent.Name);
+        }
+    }
+
+    class Member
+    {
         public string Name;
-        public int Grade;
-        public string Birthday;
         public string Address;
-        private long phone;
+        protected long phone;
 
         public long Phone
         {
             set { phone = value; }
         }
-        
-        public void SetPhone(long number)
+    }
+    
+    class Student : Member
+    {
+        static public int Count = 0;
+
+        public int Grade;
+        public string Birthday;
+
+        public Student()
         {
-            phone = number;
+
         }
+
+        public Student(string name, int grade, string birthday, string address, long phone)
+        {
+            Name = name;
+            Grade = grade;
+            Birthday = birthday;
+            Address = address;
+            Phone = phone;
+        }
+
+        //    public void SetPhone(long number)
+        //    {
+        //        phone = number;
+        //    }
+    }
+
+    class Teacher : Member
+    {
+        public string Subject;
     }
 }
