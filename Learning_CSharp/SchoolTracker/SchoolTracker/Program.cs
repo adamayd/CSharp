@@ -26,13 +26,13 @@ namespace SchoolTracker
 
                     newStudent.Name = Util.Console.Ask("Name: ");
 
-                    newStudent.Grade = int.Parse(Util.Console.Ask("Grade: "));
+                    newStudent.Grade = Util.Console.AskInt("Grade: ");
 
                     newStudent.Birthday = Util.Console.Ask("Birthday: ");
 
                     newStudent.Address = Util.Console.Ask("Address: ");
 
-                    newStudent.Phone = Int64.Parse(Util.Console.Ask("Phone Number: "));
+                    newStudent.Phone = Util.Console.AskLong("Phone Number: ");
 
                     students.Add(newStudent);
                     Student.Count++;
@@ -44,10 +44,10 @@ namespace SchoolTracker
                     Console.Clear();
 
                 }
-                catch (FormatException)
+                catch (FormatException msg)
                 {
                     Console.Clear();
-                    Console.WriteLine("Input was not a number");
+                    Console.WriteLine(msg.Message);
                 }
                 catch (Exception)
                 {
