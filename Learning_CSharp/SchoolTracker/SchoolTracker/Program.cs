@@ -16,15 +16,19 @@ namespace SchoolTracker
 
         static void Main(string[] args)
         {
-            var adding = true;
+            Logger.Log("Tracker started", priority: 0);
 
             PayRoll payroll = new PayRoll();
             payroll.PayAll();
+
+            var adding = true;
 
             while (adding)
             {
                 try
                 {
+                    Logger.Log("Adding New Student");
+
                     var newStudent = new Student();
 
                     newStudent.Name = Util.Console.Ask("Name: ");
