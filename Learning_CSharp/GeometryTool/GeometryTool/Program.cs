@@ -1,0 +1,60 @@
+﻿using System;
+
+namespace GeometryTool
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var square = new Square() { Width = 2 };
+            var triangle = new Triangle() { Base = 2, Height = 5 };
+            var rectangle = new Rectangle() { Width = 4, Height = 3 };
+
+            square.Display();
+            triangle.Display();
+            rectangle.Display();
+        }
+    }
+
+    abstract class Shape
+    {
+        public abstract int GetArea();
+
+        public void Display()
+        {
+            Console.WriteLine("The area is {0}", GetArea());
+        }
+    }
+
+    class Square : Shape
+    {
+        public int Width;
+
+        public override int GetArea()
+        {
+            return Width * Width;
+        }
+    }
+
+    class Triangle : Shape
+    {
+        public int Base;
+        public int Height;
+
+        public override int GetArea()
+        {
+            return (Base * Height) / 2;
+        }
+    }
+
+    class Rectangle : Shape
+    {
+        public int Width;
+        public int Height;
+
+        public override int GetArea()
+        {
+            return Width * Height;
+        }
+    }
+}
