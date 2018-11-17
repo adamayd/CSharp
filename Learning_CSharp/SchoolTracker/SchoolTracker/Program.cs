@@ -61,6 +61,15 @@ namespace SchoolTracker
                 }
             }
 
+            try
+            {
+                ShowGrade("Tom");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Student Tom Not Found");
+            }
+
             foreach (var student in students)
             {
                 Console.WriteLine("Name: {0}, Grade: {1}", student.Name, student.Grade);
@@ -94,6 +103,12 @@ namespace SchoolTracker
                         break;
                 }
             }
+        }
+
+        static void ShowGrade(string name)
+        {
+            var found = students.Find(student => student.Name == name);
+            Console.WriteLine("{0}'s Grade: {1}", found.Name, found.Grade);
         }
     }
 
