@@ -99,23 +99,18 @@ namespace SchoolTracker
 
     class Member
     {
-        public string Name;
-        public string Address;
-        protected long phone;
-
-        public long Phone
-        {
-            set { phone = value; }
-        }
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public long Phone { get; set; }
     }
     
     class Student : Member
     {
-        static public int Count = 0;
+        static public int Count { get; set; } = 0;
 
-        public int Grade;
-        public string Birthday;
-        public EnumSchool School;
+        public int Grade { get; set; }
+        public string Birthday { get; set; }
+        public EnumSchool School { get; set; }
 
         public Student()
         {
