@@ -18,6 +18,9 @@ namespace SchoolTracker
         {
             var adding = true;
 
+            PayRoll payroll = new PayRoll();
+            payroll.PayAll();
+
             while (adding)
             {
                 try
@@ -132,10 +135,5 @@ namespace SchoolTracker
         //    {
         //        phone = number;
         //    }
-    }
-
-    class Teacher : Member
-    {
-        public string Subject;
     }
 }
