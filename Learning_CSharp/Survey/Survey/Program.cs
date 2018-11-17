@@ -4,8 +4,13 @@ namespace Survey
 {
     class Program
     {
+        public static event Action Posted;
+
         static void Main(string[] args)
         {
+            var stats = new Stats();
+            stats.Start();
+
             var answers = new Answers();
             
             Console.Write("What is your name? ");
@@ -18,9 +23,11 @@ namespace Survey
             answers.BirthMonth = TryAnswer();
 
             answers.Display();
+            
+            if (Posted != null)
+                Posted();
 
-            ZodiacSign zodiac = new ZodiacSign();
-            zodiac.FindZodiac(answers.BirthMonth);
+            ZodiacSign.FindZodiac(answers.BirthMonth);
         }
 
         static string TryAnswer()

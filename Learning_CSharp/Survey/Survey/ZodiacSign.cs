@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Survey
 {
-    public class ZodiacSign
+    class ZodiacSign
     {
-        public void FindZodiac(string month)
+        public static void FindZodiac(string month)
         {
             switch (month.ToLower())
             {
