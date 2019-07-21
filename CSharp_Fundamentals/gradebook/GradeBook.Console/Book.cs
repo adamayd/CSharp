@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace GradeBook
+namespace GradeBook.Console
 {
     class Book
     {
@@ -30,9 +30,9 @@ namespace GradeBook
 
             result /= grades.Count;
 
-            Console.WriteLine($"The highest grade is {highGrade}");
-            Console.WriteLine($"The lowest grade is {lowGrade}");
-            Console.WriteLine($"The average grade is {result:N1}");
+            System.Console.WriteLine($"The highest grade is {highGrade}");
+            System.Console.WriteLine($"The lowest grade is {lowGrade}");
+            System.Console.WriteLine($"The average grade is {result:N1}");
         }
 
         private List<double> grades;
