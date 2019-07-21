@@ -8,7 +8,7 @@ namespace GradeBook.Console
         public Book(string name)
         {
             grades = new List<double>();
-            this.name = name;
+            Name = name;
         }
         public void AddGrade(double grade)
         {
@@ -35,6 +35,6 @@ namespace GradeBook.Console
         }
 
         private List<double> grades;
-        private string name;
+        public string Name;
     }
 }
