@@ -10,11 +10,12 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/GradeBook/bin/Debug/netcoreapp2.2/GradeBook.Console.dll",
-            "args": ["Adam", "Angie"],
+            "program": "${workspaceFolder}/GradeBook.Console/bin/Debug/netcoreapp2.2/GradeBook.Console.dll",
+            "args": [],
             "cwd": "${workspaceFolder}/GradeBook.Console",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
-            "console": "internalConsole",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
             "stopAtEntry": false
         },
         {
