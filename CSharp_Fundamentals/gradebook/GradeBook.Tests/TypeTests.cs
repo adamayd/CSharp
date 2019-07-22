@@ -7,7 +7,7 @@ namespace GradeBook.Tests
     public class TypeTests
     {
         [Fact]
-        public void Test1()
+        public void SetValueFromRef()
         {
             // arrange
             var x = GetInt();
