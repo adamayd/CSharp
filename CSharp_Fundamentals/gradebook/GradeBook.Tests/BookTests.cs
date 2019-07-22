@@ -32,14 +32,10 @@ namespace GradeBook.Tests
             var book = new Book("Test");
 
             // act
-            var grade1 = book.AddGrade(-2.0);
-            var grade2 = book.AddGrade(105);
-            var grade3 = book.AddGrade(88);
 
             // assert
-            Assert.Equal(-1, grade1);
-            Assert.Equal(-1, grade2);
-            Assert.Equal(0, grade3);
+            Assert.Throws<ArgumentException>(() => book.AddGrade(-2.0));
+            Assert.Throws<ArgumentException>(() => book.AddGrade(105));
         }
     }
 }

@@ -30,17 +30,15 @@ namespace GradeBook.Console
             }
         }
 
-        public int AddGrade(double grade)
+        public void AddGrade(double grade)
         {
             if (grade <= 100 && grade >= 0)
             {
                 grades.Add(grade);
-                return 0;
             }
             else
             {
                 throw new ArgumentException($"Invalid {nameof(grade)}");
-                // return -1;
             }
         }
 
