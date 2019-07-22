@@ -10,22 +10,32 @@ namespace GradeBook.Console
             grades = new List<double>();
             Name = name;
         }
-        public void AddGrade(double grade)
+
+        public int AddGrade(double grade)
         {
-            grades.Add(grade);
+            if (grade <= 100 && grade >= 0)
+            {
+                grades.Add(grade);
+                return 0;
+            }
+            else
+            {
+                System.Console.WriteLine("Invalid value");
+                return -1;
+            }
         }
 
         public Statistics GetStatistics()
         {
             var result = new Statistics();
             result.Average = 0.0;
-            result.High= double.MinValue;
-            result.Low= double.MaxValue;
+            result.High = double.MinValue;
+            result.Low = double.MaxValue;
 
-            foreach(var grade in grades)
+            foreach (var grade in grades)
             {
-                result.High = Math.Max(grade , result.High);
-                result.Low = Math.Min(grade , result.Low);
+                result.High = Math.Max(grade, result.High);
+                result.Low = Math.Min(grade, result.Low);
                 result.Average += grade;
             }
 
