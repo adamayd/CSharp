@@ -35,12 +35,18 @@ namespace GradeBook.Console
             if (grade <= 100 && grade >= 0)
             {
                 grades.Add(grade);
+                if(GradeAdded != null)
+                {
+                    GradeAdded(this, new EventArgs());
+                }
             }
             else
             {
                 throw new ArgumentException($"Invalid {nameof(grade)}");
             }
         }
+
+        public event GradeAddedDelegate GradeAdded;
 
         public Statistics GetStatistics()
         {
@@ -82,22 +88,10 @@ namespace GradeBook.Console
         private List<double> grades;
         public string Name
         {
-            get
-            {
-                return name;
-            }
-            set
-            {
-                if (!String.IsNullOrEmpty(value))
-                {
-                    name = value;
-                }
-                else
-                {
-                    throw new ArgumentException("Name cannot be empty");
-                }
-            }
+            get;
+            set;
         }
-        private string name;
+
+        public const string CATEGORY = "Science";
     }
 }
