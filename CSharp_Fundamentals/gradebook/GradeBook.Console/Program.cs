@@ -7,7 +7,7 @@ namespace GradeBook.Console
     {
         static void Main(string[] args)
         {
-            // Book book;
+            Book book = null;
 
             while (true)
             {
@@ -16,7 +16,7 @@ namespace GradeBook.Console
 
                 try
                 {
-                    var bookBlank = new Book(input);
+                    book = new Book(input);
                 }
                 catch (ArgumentException ex)
                 {
@@ -29,10 +29,6 @@ namespace GradeBook.Console
                 }
             }
 
-            var book = new Book("Adam's Grade Book");
-            book.GradeAdded += OnGradeAdded;
-            book.GradeAdded += OnGradeAdded;
-            book.GradeAdded -= OnGradeAdded;
             book.GradeAdded += OnGradeAdded;
 
             while (true)
