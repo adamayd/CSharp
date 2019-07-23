@@ -11,9 +11,9 @@ namespace GradeBook.Console
             Name = name;
         }
 
-        public void AddLetterGrade(char letter)
+        public void AddGrade(char letter)
         {
-            switch(letter)
+            switch (letter)
             {
                 case 'A':
                     AddGrade(90);
@@ -54,10 +54,10 @@ namespace GradeBook.Console
                 result.High = Math.Max(grade, result.High);
                 result.Low = Math.Min(grade, result.Low);
                 result.Average += grade;
-            } 
+            }
             result.Average /= grades.Count;
 
-            switch(result.Average)
+            switch (result.Average)
             {
                 case var d when d >= 90.0:
                     result.Letter = 'A';
@@ -80,6 +80,24 @@ namespace GradeBook.Console
         }
 
         private List<double> grades;
-        public string Name;
+        public string Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                if (!String.IsNullOrEmpty(value))
+                {
+                    name = value;
+                }
+                else
+                {
+                    throw new ArgumentException("Name cannot be empty");
+                }
+            }
+        }
+        private string name;
     }
 }

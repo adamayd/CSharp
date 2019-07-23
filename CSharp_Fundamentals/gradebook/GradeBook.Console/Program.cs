@@ -7,11 +7,29 @@ namespace GradeBook.Console
     {
         static void Main(string[] args)
         {
+            // Book book;
+
+            while (true)
+            {
+                System.Console.WriteLine("Please enter a name for the grade book: ");
+                var input = System.Console.ReadLine();
+
+                try
+                {
+                    var bookBlank = new Book(input);
+                }
+                catch (ArgumentException ex)
+                {
+                    System.Console.WriteLine(ex.Message);
+                }
+
+                if (!String.IsNullOrEmpty(input))
+                {
+                    break;
+                }
+            }
+
             var book = new Book("Adam's Grade Book");
-            // book.AddGrade(89.1);
-            // book.AddGrade(90.5);
-            // book.AddGrade(77.5);
-            // Please enter a grade.  Do in a loop until entering a "q"
 
             while (true)
             {
@@ -28,11 +46,11 @@ namespace GradeBook.Console
                     var grade = double.Parse(input);
                     book.AddGrade(grade);
                 }
-                catch(ArgumentException ex)
+                catch (ArgumentException ex)
                 {
                     System.Console.WriteLine(ex.Message);
                 }
-                catch(FormatException ex)
+                catch (FormatException ex)
                 {
                     System.Console.WriteLine(ex.Message);
                 }
@@ -40,6 +58,7 @@ namespace GradeBook.Console
 
             var stats = book.GetStatistics();
 
+            System.Console.WriteLine($"For the book named {book.Name}");
             System.Console.WriteLine($"The highest grade is {stats.High}");
             System.Console.WriteLine($"The lowest grade is {stats.Low}");
             System.Console.WriteLine($"The average grade is {stats.Average:N1}");
