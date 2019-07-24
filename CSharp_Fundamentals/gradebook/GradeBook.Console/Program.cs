@@ -7,8 +7,25 @@ namespace GradeBook.Console
     {
         static void Main(string[] args)
         {
-            Book book = null;
+            IBook book = null;
 
+            book = EnterBookName(book);
+
+            book.GradeAdded += OnGradeAdded;
+
+            EnterGrades(book);
+
+            var stats = book.GetStatistics();
+
+            System.Console.WriteLine($"For the book named {book.Name}");
+            System.Console.WriteLine($"The highest grade is {stats.High}");
+            System.Console.WriteLine($"The lowest grade is {stats.Low}");
+            System.Console.WriteLine($"The average grade is {stats.Average:N1}");
+            System.Console.WriteLine($"The letter grade is {stats.Letter}");
+        }
+
+        private static IBook EnterBookName(IBook book)
+        {
             while (true)
             {
                 System.Console.WriteLine("Please enter a name for the grade book: ");
@@ -16,8 +33,9 @@ namespace GradeBook.Console
 
                 try
                 {
-                    book = new Book(input);
+                    book = new DiskBook(input);
                 }
+                // TODO: add exception for blank input back in.
                 catch (ArgumentException ex)
                 {
                     System.Console.WriteLine(ex.Message);
@@ -29,8 +47,11 @@ namespace GradeBook.Console
                 }
             }
 
-            book.GradeAdded += OnGradeAdded;
+            return book;
+        }
 
+        private static void EnterGrades(IBook book)
+        {
             while (true)
             {
                 System.Console.WriteLine("Please enter a grade or q to quit: ");
@@ -55,14 +76,6 @@ namespace GradeBook.Console
                     System.Console.WriteLine(ex.Message);
                 }
             }
-
-            var stats = book.GetStatistics();
-
-            System.Console.WriteLine($"For the book named {book.Name}");
-            System.Console.WriteLine($"The highest grade is {stats.High}");
-            System.Console.WriteLine($"The lowest grade is {stats.Low}");
-            System.Console.WriteLine($"The average grade is {stats.Average:N1}");
-            System.Console.WriteLine($"The letter grade is {stats.Letter}");
         }
 
         static void OnGradeAdded(object sender, EventArgs args)
